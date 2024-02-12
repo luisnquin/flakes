@@ -19,15 +19,16 @@
           inherit (inputs) self;
         in {
           defaultPackage = pkgs.hello;
-
-          templates = {
-            devShell = {
-              path = ./templates/dev-shell;
-              description = "A simple dev shell ready to be used";
-            };
-
-            default = self.templates.devShell;
-          };
         }
-      );
+      )
+      // {
+        templates = {
+          devShell = {
+            path = ./templates/dev-shell;
+            description = "A simple dev shell ready to be used";
+          };
+
+          default = self.templates.devShell;
+        };
+      };
 }
